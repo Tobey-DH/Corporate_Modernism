@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Design Playground - Interactive design system tool for Corporate Modernism.">
+    <title>Design Playground - Interactive Design System Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">◆</span>
+                <span class="logo-text">Corporate Modernism</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="case-studies.html" class="nav-link">Case Studies</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="resources.html" class="nav-link">Resources</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Design Playground</h1>
+            <p class="page-subtitle">Experiment with design tokens and create your custom design system</p>
+        </div>
+    </section>
+
+    <!-- Playground Section -->
+    <section class="playground-section">
+        <div class="container">
+            <div class="playground-grid">
+                <!-- Controls Panel -->
+                <div class="playground-controls">
+                    <h2>Design Controls</h2>
+
+                    <!-- Color Controls -->
+                    <div class="control-group">
+                        <h3>Accent Color</h3>
+                        <div class="color-picker-group">
+                            <input type="color" id="accentColor" value="#3B82F6" class="color-picker">
+                            <input type="text" id="accentHex" value="#3B82F6" class="hex-input" maxlength="7">
+                        </div>
+                        <div class="preset-colors">
+                            <button class="preset-btn" data-color="#3B82F6" title="Default Blue">◆</button>
+                            <button class="preset-btn" data-color="#10B981" title="Emerald">◆</button>
+                            <button class="preset-btn" data-color="#E74C3C" title="Red">◆</button>
+                            <button class="preset-btn" data-color="#F39C12" title="Orange">◆</button>
+                            <button class="preset-btn" data-color="#9B59B6" title="Purple">◆</button>
+                            <button class="preset-btn" data-color="#1E40AF" title="Dark Blue">◆</button>
+                        </div>
+                    </div>
+
+                    <!-- Typography Controls -->
+                    <div class="control-group">
+                        <h3>Typography</h3>
+                        <label>
+                            Heading Size
+                            <input type="range" id="headingSize" min="28" max="56" value="42" step="2">
+                            <span id="headingSizeValue">42px</span>
+                        </label>
+                        <label>
+                            Body Size
+                            <input type="range" id="bodySize" min="12" max="20" value="16" step="1">
+                            <span id="bodySizeValue">16px</span>
+                        </label>
+                        <label>
+                            Line Height
+                            <input type="range" id="lineHeight" min="1.2" max="2" value="1.6" step="0.1">
+                            <span id="lineHeightValue">1.6</span>
+                        </label>
+                    </div>
+
+                    <!-- Spacing Controls -->
+                    <div class="control-group">
+                        <h3>Spacing</h3>
+                        <label>
+                            Base Unit
+                            <input type="range" id="baseUnit" min="4" max="24" value="8" step="2">
+                            <span id="baseUnitValue">8px</span>
+                        </label>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="control-actions">
+                        <button id="resetBtn" class="btn btn-secondary">Reset</button>
+                        <button id="exportBtn" class="btn btn-primary">Export JSON</button>
+                    </div>
+                </div>
+
+                <!-- Preview Panel -->
+                <div class="playground-preview">
+                    <h2>Live Preview</h2>
+                    
+                    <!-- Color Swatches -->
+                    <div class="preview-section">
+                        <h3>Colors</h3>
+                        <div class="color-swatches-preview">
+                            <div class="swatch-item">
+                                <div class="swatch" id="swatchPrimary"></div>
+                                <p>Primary Accent</p>
+                            </div>
+                            <div class="swatch-item">
+                                <div class="swatch" id="swatchHover"></div>
+                                <p>Hover State</p>
+                            </div>
+                            <div class="swatch-item">
+                                <div class="swatch bg-light">
+                                    <div style="background-color: #FAFAFA; width: 100%; height: 100%;"></div>
+                                </div>
+                                <p>Background</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Typography Preview -->
+                    <div class="preview-section">
+                        <h3>Typography</h3>
+                        <div id="typographyPreview" class="typography-preview">
+                            <h1>Heading Example</h1>
+                            <p>Body text example with your custom settings. This text will update as you adjust the controls. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+
+                    <!-- Component Preview -->
+                    <div class="preview-section">
+                        <h3>Components</h3>
+                        <div class="components-preview-grid">
+                            <button id="previewBtn" class="btn btn-primary">Button Preview</button>
+                            <div id="previewCard" class="preview-card">
+                                <h4>Card Component</h4>
+                                <p>This card shows spacing and visual hierarchy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Export Modal -->
+    <div id="exportModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <h2>Export Design Tokens</h2>
+            <p>Copy your custom design tokens below:</p>
+            <textarea id="exportCode" readonly class="export-textarea"></textarea>
+            <div class="export-actions">
+                <button id="copyBtn" class="btn btn-primary">Copy to Clipboard</button>
+                <button id="downloadBtn" class="btn btn-secondary">Download JSON</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Apply Your Design System</h2>
+            <p>Once you've created your perfect design, implement it in your projects</p>
+            <a href="services.html" class="btn btn-primary btn-large">Let's Work Together</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Corporate Modernism</h4>
+                    <p>Professional design philosophy for business excellence.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Design Guide</a></li>
+                        <li><a href="#">Component Library</a></li>
+                        <li><a href="#">Design System</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Corporate Modernism. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="playground.js"></script>
+</body>
+</html>
