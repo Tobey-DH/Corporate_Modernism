@@ -4,6 +4,7 @@
 
 html {
     scroll-behavior: smooth;
+    font-family: sans-serif;
 }
 
 /* ====================================
@@ -637,8 +638,10 @@ html {
 
 .featured-grid {
     display: grid;
-    /* fixed column widths so three cards center neatly under the heading */
-    grid-template-columns: repeat(3, 360px);
+    /* use flexible columns that can shrink on desktop while keeping the 3-up layout
+       until the mobile breakpoint. Using minmax lets cards shrink but keeps the
+       overall grid structure intact as the viewport narrows. */
+    grid-template-columns: repeat(3, minmax(260px, 360px));
     gap: 32px;
     justify-content: center; /* center the grid within the container */
     margin: 0 auto;
@@ -677,12 +680,15 @@ html {
 
 @media (max-width: 1024px) {
     .featured-grid {
-        grid-template-columns: repeat(2, 360px);
+        /* keep two columns on medium screens but allow each column to flex */
+        grid-template-columns: repeat(2, minmax(220px, 360px));
         justify-content: center;
     }
 }
 
-@media (max-width: 640px) {
+/* Only collapse to a single column on smaller mobile screens (≈480px)
+   — this preserves the desktop layout when the browser is resized down. */
+@media (max-width: 480px) {
     .featured-grid {
         grid-template-columns: 1fr;
         padding: 0 16px;
@@ -1500,7 +1506,9 @@ html {
 
 .case-study-grid {
     display: grid;
-    grid-template-columns: minmax(320px, 640px) 320px;
+    /* allow the main content to flex and the visual column to keep a sensible
+       width; minmax keeps the left column shrinkable while preserving layout */
+    grid-template-columns: minmax(280px, 1fr) 280px;
     gap: 32px;
     justify-content: center; /* center the whole two-column layout */
     align-items: start;
@@ -1544,9 +1552,21 @@ html {
 }
 
 .case-image {
-    width: 320px;
-    height: 200px;
+    width: 100%;
+    max-width: 320px; /* preserve intended visual width on larger screens */
+    height: auto; /* allow image to scale down fluidly */
     border-radius: 6px;
+    overflow: hidden;
+}
+
+/* Make any img inside featured/case visuals responsive */
+.featured-image img,
+.case-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: inherit;
+    object-fit: cover;
 }
 
 .image-caption {
@@ -1561,7 +1581,10 @@ html {
 
 .takeaways-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 720px));
+    /* allow multiple columns to exist down to smaller widths (280px) so the
+       site keeps its layout as the browser shrinks; single-column at mobile
+       widths will be controlled by the mobile breakpoint below. */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px;
     justify-content: center;
     margin: 0 auto;
@@ -1585,11 +1608,11 @@ html {
     color: #525252;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 480px) {
+    /* Stack case study content and visuals only on narrow mobile screens */
     .case-study-grid {
         grid-template-columns: 1fr;
     }
-    /* On small screens place content above visual */
     .case-study-grid > .case-study-content { grid-column: 1; grid-row: 1; }
     .case-study-grid > .case-study-visual  { grid-column: 1; grid-row: 2; }
 }
@@ -2181,11 +2204,11 @@ html {
     margin: 0 auto;
 }
 
-/* 3-column system card layout with consistent sizing */
 .system-grid {
     display: grid;
-    /* fixed column widths keep cards consistent and let the grid center precisely */
-    grid-template-columns: repeat(3, 340px);
+    /* flexible 3-column layout: columns can shrink down while keeping the
+       overall 3-up structure on desktop. Cards will remain centered. */
+    grid-template-columns: repeat(3, minmax(220px, 340px));
     gap: 32px;
     justify-content: center; /* centers the whole grid inside the container */
     justify-items: center;    /* centers items inside each cell */
@@ -2194,8 +2217,8 @@ html {
 }
 
 .system-card {
-    width: 340px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 340px; /* preserve card visual width on large screens */
     min-height: 320px;
     display: flex;
     flex-direction: column;
@@ -2211,12 +2234,12 @@ html {
 
 @media (max-width: 1024px) {
     .system-grid {
-        grid-template-columns: repeat(2, 340px);
+        grid-template-columns: repeat(2, minmax(200px, 340px));
         justify-content: center;
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 480px) {
     .system-grid {
         grid-template-columns: 1fr;
         padding: 0 16px;
