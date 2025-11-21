@@ -2165,7 +2165,7 @@ html {
     max-width: 900px;
     margin: 0 auto;
     padding: 0 24px;
-    text-align: center;
+    text-align: left;
 }
 
 /* Center intro text block */
@@ -2178,7 +2178,7 @@ html {
 .principle-list {
     text-align: left;
     max-width: 720px;
-    margin: 0 auto;
+    margin: 0;
 }
 
 /* 3-column system card layout with consistent sizing */
