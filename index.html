@@ -10,8 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <a class="skip-to-content" href="#main">Skip to main content</a>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Primary">
         <div class="nav-container">
             <div class="nav-logo">
                 <span class="logo-icon">◆</span>
@@ -32,12 +33,13 @@
         </div>
     </nav>
 
+    <main id="main">
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
                 <h1 class="hero-title">Design for Trust & Clarity</h1>
                 <p class="hero-subtitle">Corporate Modernism combines minimalist principles with professional sophistication. Create interfaces that are purposeful, elegant, and intuitive.</p>
-                <div class="hero-buttons">
+                    <div class="hero-buttons">
                     <a href="about.html" class="btn btn-primary">Explore Philosophy</a>
                     <a href="#principles" class="btn btn-secondary">Learn More</a>
                 </div>
@@ -281,7 +283,7 @@
                 <div class="system-card">
                     <h3>Imagery & Icons</h3>
                     <div class="imagery-preview">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <circle cx="12" cy="12" r="10"></circle>
                             <path d="M12 6v6l4 2"></path>
                         </svg>
@@ -642,6 +644,8 @@
             <a href="about.html" class="btn btn-primary btn-large">Learn More About Our Philosophy</a>
         </div>
     </section>
+
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
