@@ -10,8 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <a class="skip-to-content" href="#main">Skip to main content</a>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Primary">
         <div class="nav-container">
             <div class="nav-logo">
                 <span class="logo-icon">◆</span>
@@ -25,7 +26,7 @@
                 <li><a href="blog.html" class="nav-link">Blog</a></li>
                 <li><a href="resources.html" class="nav-link active">Resources</a></li>
             </ul>
-            <button class="nav-toggle" id="navToggle">
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -41,7 +42,7 @@
         </div>
     </header>
 
-    <main class="container" style="padding:40px 24px;">
+    <main id="main" class="container" style="padding:40px 24px;">
         <section class="section-header">
             <h2>Design tooling</h2>
             <p class="section-lead">Practical tools we use and recommend for building systems and production-ready UI.</p>

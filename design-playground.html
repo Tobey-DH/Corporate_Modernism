@@ -10,8 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <a class="skip-to-content" href="#main">Skip to main content</a>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Primary">
         <div class="nav-container">
             <div class="nav-logo">
                 <span class="logo-icon">◆</span>
@@ -24,7 +25,7 @@
                 <li><a href="blog.html" class="nav-link">Blog</a></li>
                 <li><a href="resources.html" class="nav-link">Resources</a></li>
             </ul>
-            <button class="nav-toggle" id="navToggle">
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -32,6 +33,7 @@
         </div>
     </nav>
 
+    <main id="main">
     <!-- Page Hero -->
     <section class="page-hero">
         <div class="container">
@@ -174,6 +176,8 @@
             <a href="services.html" class="btn btn-primary btn-large">Let's Work Together</a>
         </div>
     </section>
+
+    </main>
 
     <!-- Footer -->
     <footer class="footer">

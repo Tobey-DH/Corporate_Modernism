@@ -1085,8 +1085,7 @@ html {
 .principle-number {
     font-size: 48px;
     font-weight: 700;
-    color: #3B82F6;
-    opacity: 0.3;
+    color: #3B82F6; /* full contrast for large text */
 }
 
 .principle-details h3 {
